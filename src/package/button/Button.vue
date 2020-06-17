@@ -5,10 +5,11 @@
         colorType?'el-button--'+colorType:'',
         size?'el-button--'+size:'',
         {
-        'is-round':round
+        'is-round':round,
+        'is-circle':circle
         }
     ]">
-        按钮
+        <span v-if="$slots.default"><slot></slot></span>
     </button>
 </template>
 
@@ -21,6 +22,7 @@ export default {
       default: 'black'
     },
     round: Boolean,
+    circle: Boolean,
     size: {
       type: String,
       default: 'normal'
@@ -35,22 +37,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .el-button--red {
-        color: black;
-    }
-
-    .el-button--red {
-        color: red;
-    }
-
-    .el-button--blue {
-        color: blue;
-    }
-
-    .el-button--max {
-        width: 100px;
-        height: 56px;
-    }
     .el-button{
         display: inline-block;
         line-height: 1;
@@ -73,6 +59,24 @@ export default {
         font-size: 14px;
         border-radius: 4px;
     }
+    .el-button--black {
+        color: black;
+    }
+
+    .el-button--danger {
+        background-color: red;
+        color: white;
+    }
+
+    .el-button--primary {
+        background-color: blue;
+        color: white;
+    }
+
+    .el-button--max {
+        width: 100px;
+        height: 56px;
+    }
     .el-button--normal {
         width: 80px;
         height: 45px;
@@ -83,5 +87,9 @@ export default {
     }
     .is-round {
         border-radius: 10px;
+    }
+    .is-circle{
+        border-radius: 50%;
+        padding: 12px;
     }
 </style>
